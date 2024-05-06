@@ -13,9 +13,7 @@ This is a job searching web application designed to simplify the process of find
 ## Table of Contents
 
 - [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- [Tech-Stack](#Tech-Stack)
 - [Acknowledgements](#acknowledgements)
 
 ## Installation
@@ -36,7 +34,7 @@ This is a job searching web application designed to simplify the process of find
    npm run dev
    ```
 
-## Tech Stack
+## Tech-Stack
 
 This project is built using the following technologies:
 
