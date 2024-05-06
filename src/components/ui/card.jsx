@@ -110,7 +110,9 @@ const CardJob = ({ job }) => {
           >
             Minimum Experience
           </Typography>
-          <Typography sx={{ fontWeight: 500 }}>{minExp} years</Typography>
+          <Typography sx={{ fontWeight: 500 }}>
+            {minExp ? minExp : 0} years
+          </Typography>
         </Box>
         <Box
           sx={{
