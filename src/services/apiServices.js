@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getJob = async () => {
   const body = {
-    limit: 100,
+    limit: 800,
     offset: 0,
   };
 
