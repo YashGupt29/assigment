@@ -4,33 +4,32 @@ import {
   Button,
   Card,
   CardContent,
+  Link,
   Typography,
 } from "@mui/material";
-import { Hourglass, Instagram, Zap } from "lucide-react";
+import { Hourglass, Zap } from "lucide-react";
 import ViewJob from "./dialog";
 import Logo from "../../assets/avatar.png";
 import Logo2 from "../../assets/avatar2.webp";
 // eslint-disable-next-line react/prop-types
 const CardJob = ({ job }) => {
-  // eslint-disable-next-line react/prop-types
   const {
-    companyName,
-    logoUrl,
-    jobRole,
-    minExp,
-    location,
-    jobDetailsFromCompany,
-    maxJdSalary,
-    minJdSalary,
+    companyName = "",
+    logoUrl = "",
+    jobRole = "",
+    minExp = 0,
+    location = "",
+    jobDetailsFromCompany = "",
+    maxJdSalary = 0,
+    minJdSalary = 0,
   } = job;
   // eslint-disable-next-line react/prop-types
   const trimmedDetails = jobDetailsFromCompany
     ?.split(" ")
     .slice(0, 80)
     .join(" ");
-
   return (
-    <Card sx={{ width: 400 }}>
+    <Card sx={{ width: { xs: "95%", sm: "30%" } }} className="dark-mode">
       <CardContent
         sx={{
           display: "flex",
@@ -134,8 +133,15 @@ const CardJob = ({ job }) => {
               borderRadius: 3,
             }}
           >
-            <Zap fill="yellow" color="orange" />
-            Easy Apply
+            <Link
+              href={job?.jdLink}
+              color="inherit"
+              sx={{ textDecoration: "none" }}
+              target="_blank"
+            >
+              <Zap fill="yellow" color="orange" />
+              Easy Apply
+            </Link>
           </Button>
           <Button
             sx={{

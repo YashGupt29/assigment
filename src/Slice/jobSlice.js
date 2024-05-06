@@ -66,8 +66,9 @@ const jobsSlice = createSlice({
               .toLowerCase()
               .includes(companyName.toLowerCase())) &&
           (!experience ||
-            (job.minExp <= experience && job.maxExp >= experience)) &&
-          (!salary || (job.minJdSalary <= salary && job.maxJdSalary >= salary))
+            (job?.minExp <= experience && job?.maxExp >= experience)) &&
+          (!salary ||
+            (job?.minJdSalary <= salary && job?.maxJdSalary >= salary))
         );
       });
     },
