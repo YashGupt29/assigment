@@ -48,23 +48,23 @@ const jobsSlice = createSlice({
     // Reducer to filter jobs based on all applied filters
     filterJobs: (state) => {
       const { jobs, filters } = state;
-      const {
-        role,
-        numberOfEmployees,
-        remote,
-        minimumBasePay,
-        companyName,
-        experience,
-        salary,
-      } = filters;
+      const { role, remote, minimumBasePay, companyName, experience, salary } =
+        filters;
 
       state.filteredJobs = jobs.filter((job) => {
         return (
-          (!role.length || role.includes(job.jobRole)) &&
-          (!numberOfEmployees || job.numberOfEmployees === numberOfEmployees) &&
-          (!remote || job.remote === remote) &&
-          (!minimumBasePay || job.minimumBasePay >= minimumBasePay) &&
-          (!companyName || job.companyName === companyName) &&
+          (!role?.length || role.includes(job.jobRole)) &&
+          (!remote ||
+            (remote === "Both"
+              ? ""
+              : remote === "remote"
+              ? job.location === "remote"
+              : job.location !== "remote")) &&
+          (!minimumBasePay || job?.minJdSalary >= minimumBasePay) &&
+          (!companyName ||
+            job?.companyName
+              .toLowerCase()
+              .includes(companyName.toLowerCase())) &&
           (!experience ||
             (job.minExp <= experience && job.maxExp >= experience)) &&
           (!salary || (job.minJdSalary <= salary && job.maxJdSalary >= salary))

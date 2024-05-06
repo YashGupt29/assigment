@@ -1,9 +1,14 @@
 import { Box, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { filterJobs, setMinimumBasePayFilter } from "../../Slice/jobSlice";
 const MinimumBaseSalary = () => {
-  const [minSalary, setMinSalary] = useState("");
+  const names = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+  const dispatch = useDispatch();
+
   const handleChange = (event) => {
-    setMinSalary(event.target.value);
+    const value = event.target.value;
+    dispatch(setMinimumBasePayFilter(value));
+    dispatch(filterJobs());
   };
 
   return (
@@ -15,13 +20,14 @@ const MinimumBaseSalary = () => {
         <Select
           labelId="minSalary"
           id="minSalary"
-          value={minSalary}
           label="minSalary"
           onChange={handleChange}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {names.map((name) => (
+            <MenuItem value={name} key={name}>
+              {name}L
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
     </Box>

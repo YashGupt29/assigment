@@ -1,26 +1,33 @@
 import { Box, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { filterJobs, setRemoteFilter } from "../../Slice/jobSlice";
 
 const Remote = () => {
-  const [remote, setRemote] = useState("");
+  const dispatch = useDispatch();
+  const names = ["remote", "in-office", "Both"];
   const handleChange = (event) => {
-    setRemote(event.target.value);
+    const value = event.target.value;
+    dispatch(setRemoteFilter(value));
+    dispatch(filterJobs());
   };
 
   return (
-    <Box sx={{ width: 120 }}>
+    <Box sx={{ width: 200 }}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Remote</InputLabel>
         <Select
+          defaultValue={names[2]}
           labelId="remote"
           id="remote"
-          value={remote}
           label="remote"
           onChange={handleChange}
+          sx={{ textAlign: "start" }}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {names.map((name) => (
+            <MenuItem value={name} key={name}>
+              {name}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
     </Box>

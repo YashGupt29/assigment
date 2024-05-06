@@ -25,7 +25,7 @@ const CardJob = ({ job }) => {
   } = job;
   // eslint-disable-next-line react/prop-types
   const trimmedDetails = jobDetailsFromCompany
-    .split(" ")
+    ?.split(" ")
     .slice(0, 80)
     .join(" ");
 
